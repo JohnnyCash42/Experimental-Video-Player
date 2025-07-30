@@ -68,7 +68,8 @@ def play_video(video_key):
     if not file.exists():
         print(f"File not found: {file}")
         return
-
+    
+    current_video = video_key
     clip = VideoFileClip(file)
     clip.preview()
     clip.close()
