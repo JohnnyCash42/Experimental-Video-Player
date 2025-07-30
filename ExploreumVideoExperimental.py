@@ -93,17 +93,3 @@ for pin in pins_to_test:
 
 # Start idle video
 idle_video.loop().preview()
-
-# Keep the main thread alive
-try:
-    while True:
-        time.sleep(1)  # Main thread sleeps, threads handle everything
-except KeyboardInterrupt:
-    print("Exiting...")
-finally:
-    GPIO.cleanup()
-    with lock:
-        if player and player.poll() is None:
-            player.terminate()
-        if idle_player and idle_player.poll() is None:
-            idle_player.terminate()
